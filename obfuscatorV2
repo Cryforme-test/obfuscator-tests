@@ -1,0 +1,1576 @@
+-- ATACK V9.8
+return (function(...)
+    local _type=type _pcall=pcall _concat=table.concat _char=string.char _sub=string.sub
+    local _tonum=tonumber _floor=math.floor _unpack=table.unpack or unpack
+    local _rawget=rawget _rawset=rawset _setmeta=setmetatable _getmeta=getmetatable
+    local _clock=os.clock _random=math.random _select=select
+    local _pack = table.pack or function(...) return {n=_select('#',...), ...} end
+
+    local _trap = "\z\n\65\66\67" .. ""
+    local _trap2 = (function() return 1; end)();
+    local _trap3 = [[\n\n]] .. ""
+
+    local _ck=0
+    _ck=_ck+(_pcall~=pcall and 1 or 0)
+    _ck=_ck+(_type~=type and 1 or 0)
+    _ck=_ck+(_rawget~=rawget and 1 or 0)
+    _ck=_ck+(_rawset~=rawset and 1 or 0)
+    if _ck>0 then return end
+    local _dbg=debug
+    if _dbg and _dbg.gethook then local _hk=_dbg.gethook(); if _hk then return end end
+
+    local _sid="52efa50d00b51895"
+    local _sidXor=96977335
+    if #_sid~=16 then return end
+
+    local _ops=338754078
+    local _opMapData={
+    {
+        5,
+        {
+            204,
+            222,
+            227,
+            247,
+            143
+        },
+        0
+    },
+    {
+        7,
+        {
+            16,
+            34,
+            63,
+            203,
+            238,
+            248,
+            142
+        },
+        1
+    },
+    {
+        8,
+        {
+            167,
+            179,
+            76,
+            90,
+            109,
+            15,
+            30,
+            46
+        },
+        2
+    },
+    {
+        9,
+        {
+            206,
+            220,
+            229,
+            241,
+            138,
+            152,
+            171,
+            184,
+            70
+        },
+        3
+    },
+    {
+        10,
+        {
+            40,
+            216,
+            210,
+            252,
+            250,
+            156,
+            174,
+            177,
+            66,
+            88
+        },
+        4
+    },
+    {
+        10,
+        {
+            237,
+            253,
+            130,
+            144,
+            162,
+            186,
+            72,
+            90,
+            104,
+            118
+        },
+        5
+    },
+    {
+        11,
+        {
+            61,
+            43,
+            223,
+            243,
+            247,
+            132,
+            152,
+            170,
+            180,
+            70,
+            84
+        },
+        6
+    },
+    {
+        9,
+        {
+            14,
+            28,
+            37,
+            49,
+            207,
+            217,
+            236,
+            252,
+            146
+        },
+        7
+    },
+    {
+        10,
+        {
+            194,
+            246,
+            252,
+            150,
+            144,
+            175,
+            185,
+            76,
+            92,
+            114
+        },
+        8
+    },
+    {
+        3,
+        {
+            133,
+            145,
+            162
+        },
+        9
+    },
+    {
+        3,
+        {
+            185,
+            174,
+            78
+        },
+        10
+    },
+    {
+        3,
+        {
+            202,
+            205,
+            229
+        },
+        11
+    },
+    {
+        3,
+        {
+            113,
+            15,
+            1
+        },
+        12
+    },
+    {
+        3,
+        {
+            230,
+            243,
+            137
+        },
+        13
+    },
+    {
+        6,
+        {
+            103,
+            122,
+            8,
+            20,
+            41,
+            45
+        },
+        14
+    },
+    {
+        2,
+        {
+            97,
+            100
+        },
+        15
+    },
+    {
+        2,
+        {
+            245,
+            137
+        },
+        16
+    },
+    {
+        2,
+        {
+            220,
+            245
+        },
+        17
+    },
+    {
+        2,
+        {
+            24,
+            32
+        },
+        18
+    },
+    {
+        2,
+        {
+            208,
+            252
+        },
+        19
+    },
+    {
+        2,
+        {
+            129,
+            146
+        },
+        20
+    },
+    {
+        3,
+        {
+            219,
+            233,
+            227
+        },
+        21
+    },
+    {
+        3,
+        {
+            88,
+            98,
+            127
+        },
+        22
+    },
+    {
+        3,
+        {
+            67,
+            101,
+            127
+        },
+        23
+    },
+    {
+        3,
+        {
+            119,
+            3,
+            15
+        },
+        24
+    },
+    {
+        5,
+        {
+            31,
+            43,
+            39,
+            193,
+            223
+        },
+        25
+    },
+    {
+        8,
+        {
+            207,
+            219,
+            247,
+            241,
+            143,
+            148,
+            164,
+            168
+        },
+        26
+    },
+    {
+        4,
+        {
+            14,
+            31,
+            35,
+            204
+        },
+        27
+    },
+    {
+        6,
+        {
+            250,
+            252,
+            158,
+            142,
+            190,
+            179
+        },
+        28
+    },
+    {
+        7,
+        {
+            228,
+            244,
+            134,
+            137,
+            190,
+            174,
+            72
+        },
+        29
+    },
+    {
+        3,
+        {
+            214,
+            216,
+            248
+        },
+        30
+    },
+    {
+        8,
+        {
+            235,
+            243,
+            144,
+            140,
+            168,
+            184,
+            71,
+            89
+        },
+        31
+    },
+    {
+        8,
+        {
+            90,
+            95,
+            127,
+            104,
+            12,
+            28,
+            35,
+            197
+        },
+        32
+    },
+    {
+        5,
+        {
+            63,
+            217,
+            208,
+            227,
+            230
+        },
+        33
+    }
+}
+    local _om={}
+    for _i=1,#_opMapData do
+        local _e=_opMapData[_i] local _kb={} local _os=_ops
+        for _j=1,_e[1] do _os=(_os*48271)%2147483647; _kb[_j]=_char(_e[2][_j]~((_os+(_j-1)*17)%256)) end
+        _om[_concat(_kb)]=_e[3]
+    end
+
+    local _disp={}
+    local _off=30
+    local function _r(k) return _om[k]+_off end
+    _disp[_r('LOADK')]=function(vm,a) vm.st[#vm.st+1]=_dec(vm.k[a+1],vm) end
+    _disp[_r('LOADNIL')]=function(vm) vm.st[#vm.st+1]=nil end
+    _disp[_r('LOADBOOL')]=function(vm,a) vm.st[#vm.st+1]=a~=0 end
+    _disp[_r('LOADLOCAL')]=function(vm,a) vm.st[#vm.st+1]=vm.lc[vm.k[a+1]] end
+    _disp[_r('STORELOCAL')]=function(vm,a) vm.lc[vm.k[a+1]]=vm.st[#vm.st]; vm.st[#vm.st]=nil end
+    _disp[_r('LOADGLOBAL')]=function(vm,a) vm.st[#vm.st+1]=_G[vm.k[a+1]] end
+    _disp[_r('STOREGLOBAL')]=function(vm,a) _G[vm.k[a+1]]=vm.st[#vm.st]; vm.st[#vm.st]=nil end
+    _disp[_r('LOADINDEX')]=function(vm) local k=vm.st[#vm.st]; vm.st[#vm.st]=nil; local o=vm.st[#vm.st]; vm.st[#vm.st]=nil; if _type(o)=='table' then vm.st[#vm.st+1]=o[k] else vm.st[#vm.st+1]=nil end end
+    _disp[_r('STOREINDEX')]=function(vm) local v=vm.st[#vm.st]; vm.st[#vm.st]=nil; local k=vm.st[#vm.st]; vm.st[#vm.st]=nil; local o=vm.st[#vm.st]; vm.st[#vm.st]=nil; if _type(o)=='table' then o[k]=v end end
+    _disp[_r('ADD')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a+b end
+    _disp[_r('SUB')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a-b end
+    _disp[_r('MUL')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a*b end
+    _disp[_r('DIV')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a/b end
+    _disp[_r('MOD')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a%b end
+    _disp[_r('CONCAT')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=tostring(a)..tostring(b) end
+    _disp[_r('EQ')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a==b end
+    _disp[_r('NE')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a~=b end
+    _disp[_r('LT')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a<b end
+    _disp[_r('LE')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a<=b end
+    _disp[_r('GT')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a>b end
+    _disp[_r('GE')]=function(vm) local b=vm.st[#vm.st]; vm.st[#vm.st]=nil; local a=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.st[#vm.st+1]=a>=b end
+    _disp[_r('NOT')]=function(vm) vm.st[#vm.st]=not vm.st[#vm.st] end
+    _disp[_r('NEG')]=function(vm) vm.st[#vm.st]=-vm.st[#vm.st] end
+    _disp[_r('LEN')]=function(vm) local v=vm.st[#vm.st]; if _type(v)=='string' or _type(v)=='table' then vm.st[#vm.st]=#v else vm.st[#vm.st]=0 end end
+    _disp[_r('JMP')]=function(vm,a) vm.pc=a+1 end
+    _disp[_r('JMPIF')]=function(vm,a) if vm.st[#vm.st] then vm.pc=a+1 end; vm.st[#vm.st]=nil end
+    _disp[_r('JMPIFNOT')]=function(vm,a) if not vm.st[#vm.st] then vm.pc=a+1 end; vm.st[#vm.st]=nil end
+    _disp[_r('CALL')]=function(vm,a,b,c)
+        local args={}; for _i=1,a do args[a-_i+1]=vm.st[#vm.st]; vm.st[#vm.st]=nil end
+        local fn=vm.st[#vm.st]; vm.st[#vm.st]=nil
+        local want=(c and c>0) and c or 1
+        if _type(fn)=='function' then
+            local r=_pack(fn(_unpack(args)))
+            for _i=1,want do vm.st[#vm.st+1]=r[_i] end
+        else
+            for _i=1,want do vm.st[#vm.st+1]=nil end
+        end
+    end
+    _disp[_r('RETURN')]=function(vm) vm.ret=vm.st[#vm.st]; vm.st[#vm.st]=nil; vm.halt=true end
+    _disp[_r('CLOSURE')]=function(vm,a)
+        local sub=vm.p[a+1]
+        local child={c=sub.c,k=sub.k,p=sub.p,n=sub.n,sk=sub.sk,pc=1,st={},lc={},up={},ret=nil,halt=false}
+        vm.st[#vm.st+1]=function(...)
+            local ca={...}; for _i=#ca,1,-1 do child.st[#child.st+1]=ca[_i] end
+            _run(child); return child.ret
+        end
+    end
+    _disp[_r('POP')]=function(vm) vm.st[#vm.st]=nil end
+    _disp[_r('NEWTABLE')]=function(vm) vm.st[#vm.st+1]={} end
+    _disp[_r('SETTABLE')]=function(vm) local v=vm.st[#vm.st]; vm.st[#vm.st]=nil; local k=vm.st[#vm.st]; vm.st[#vm.st]=nil; local o=vm.st[#vm.st]; vm.st[#vm.st]=nil; if _type(o)=='table' then o[k]=v end end
+    _disp[_r('DUMMY')]=function() end
+
+    local _njgxlaplo={
+    ["c"] = {
+        {
+            89,
+            92,
+            92,
+            92
+        },
+        {
+            143,
+            70,
+            71,
+            71
+        },
+        {
+            117,
+            114,
+            114,
+            114
+        },
+        {
+            123,
+            17,
+            19,
+            19
+        },
+        {
+            45,
+            74,
+            73,
+            73
+        },
+        {
+            31,
+            214,
+            212,
+            212
+        },
+        {
+            247,
+            249,
+            249,
+            249
+        },
+        {
+            176,
+            176,
+            180,
+            180
+        },
+        {
+            22,
+            22,
+            19,
+            19
+        },
+        {
+            251,
+            230,
+            230,
+            230
+        },
+        {
+            168,
+            74,
+            75,
+            73
+        },
+        {
+            180,
+            218,
+            220,
+            220
+        },
+        {
+            235,
+            232,
+            239,
+            239
+        },
+        {
+            7,
+            103,
+            96,
+            96
+        },
+        {
+            138,
+            235,
+            237,
+            237
+        },
+        {
+            148,
+            248,
+            240,
+            240
+        },
+        {
+            160,
+            167,
+            167,
+            167
+        },
+        {
+            178,
+            115,
+            122,
+            122
+        },
+        {
+            151,
+            152,
+            152,
+            152
+        },
+        {
+            41,
+            209,
+            203,
+            203
+        },
+        {
+            8,
+            13,
+            11,
+            11
+        },
+        {
+            244,
+            52,
+            60,
+            60
+        },
+        {
+            90,
+            93,
+            93,
+            93
+        },
+        {
+            165,
+            172,
+            165,
+            165
+        },
+        {
+            73,
+            70,
+            70,
+            70
+        },
+        {
+            210,
+            40,
+            50,
+            50
+        },
+        {
+            80,
+            14,
+            74,
+            74
+        },
+        {
+            245,
+            240,
+            240,
+            240
+        },
+        {
+            196,
+            202,
+            192,
+            192
+        },
+        {
+            55,
+            90,
+            80,
+            80
+        },
+        {
+            70,
+            77,
+            70,
+            70
+        },
+        {
+            29,
+            26,
+            26,
+            26
+        },
+        {
+            0,
+            109,
+            103,
+            103
+        },
+        {
+            32,
+            72,
+            68,
+            68
+        },
+        {
+            112,
+            105,
+            107,
+            106
+        },
+        {
+            80,
+            78,
+            78,
+            78
+        },
+        {
+            34,
+            227,
+            238,
+            238
+        },
+        {
+            82,
+            56,
+            53,
+            53
+        },
+        {
+            176,
+            218,
+            212,
+            212
+        },
+        {
+            202,
+            205,
+            205,
+            205
+        },
+        {
+            130,
+            232,
+            229,
+            229
+        },
+        {
+            159,
+            191,
+            1023,
+            615
+        },
+        {
+            79,
+            130,
+            132,
+            132
+        },
+        {
+            92,
+            55,
+            56,
+            56
+        },
+        {
+            91,
+            92,
+            92,
+            92
+        },
+        {
+            165,
+            216,
+            218,
+            219
+        },
+        {
+            17,
+            15,
+            15,
+            15
+        },
+        {
+            132,
+            88,
+            72,
+            72
+        },
+        {
+            15,
+            120,
+            104,
+            104
+        },
+        {
+            112,
+            168,
+            184,
+            184
+        },
+        {
+            103,
+            96,
+            96,
+            96
+        },
+        {
+            75,
+            90,
+            75,
+            75
+        },
+        {
+            60,
+            59,
+            59,
+            59
+        },
+        {
+            120,
+            162,
+            176,
+            176
+        },
+        {
+            32,
+            39,
+            39,
+            39
+        },
+        {
+            193,
+            31,
+            13,
+            13
+        },
+        {
+            86,
+            64,
+            83,
+            83
+        },
+        {
+            29,
+            196,
+            214,
+            214
+        },
+        {
+            17,
+            243,
+            242,
+            243
+        },
+        {
+            93,
+            67,
+            67,
+            67
+        },
+        {
+            117,
+            100,
+            112,
+            112
+        },
+        {
+            73,
+            148,
+            129,
+            129
+        },
+        {
+            129,
+            162,
+            917,
+            164
+        },
+        {
+            36,
+            253,
+            239,
+            239
+        },
+        {
+            242,
+            252,
+            252,
+            252
+        },
+        {
+            225,
+            159,
+            158,
+            159
+        },
+        {
+            94,
+            64,
+            64,
+            64
+        },
+        {
+            154,
+            172,
+            230,
+            230
+        },
+        {
+            109,
+            79,
+            572,
+            368
+        },
+        {
+            112,
+            85,
+            447,
+            378
+        },
+        {
+            12,
+            29,
+            9,
+            9
+        },
+        {
+            81,
+            35,
+            53,
+            53
+        },
+        {
+            78,
+            48,
+            49,
+            48
+        },
+        {
+            92,
+            66,
+            66,
+            66
+        },
+        {
+            248,
+            228,
+            228,
+            228
+        }
+    },
+    ["k"] = {
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    167,
+                    208
+                },
+                {
+                    109,
+                    241
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    135,
+                    208
+                },
+                {
+                    109,
+                    241
+                },
+                {
+                    104,
+                    213
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    181,
+                    223,
+                    105,
+                    226
+                },
+                {
+                    68,
+                    195,
+                    95
+                },
+                {
+                    75,
+                    181
+                },
+                {
+                    240
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    168,
+                    197,
+                    116
+                },
+                {
+                    228,
+                    82,
+                    139
+                },
+                {
+                    3,
+                    1
+                },
+                {
+                    155,
+                    245,
+                    34,
+                    125
+                },
+                {
+                    165,
+                    34,
+                    68
+                },
+                {
+                    166,
+                    82
+                },
+                {
+                    250,
+                    149
+                },
+                {
+                    226,
+                    88,
+                    198
+                },
+                {
+                    203,
+                    251,
+                    14
+                },
+                {
+                    21,
+                    80
+                },
+                {
+                    42,
+                    214
+                },
+                {
+                    13,
+                    150,
+                    97
+                },
+                {
+                    247,
+                    130,
+                    87,
+                    14
+                },
+                {
+                    81,
+                    248,
+                    241
+                },
+                {
+                    131,
+                    142,
+                    53
+                },
+                {
+                    65,
+                    40,
+                    63,
+                    69
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    181,
+                    195,
+                    108
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    176,
+                    210,
+                    97,
+                    248
+                },
+                {
+                    77
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    178,
+                    212,
+                    115
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    175,
+                    218
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    147,
+                    197
+                },
+                {
+                    97,
+                    224,
+                    84
+                },
+                {
+                    194,
+                    111,
+                    65
+                },
+                {
+                    152,
+                    241
+                }
+            }
+        },
+        {
+            ["t"] = 2,
+            ["f"] = {
+                ["q"] = 3444,
+                ["r"] = 1212
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    159,
+                    194
+                },
+                {
+                    101,
+                    248,
+                    71,
+                    238
+                },
+                {
+                    30,
+                    113,
+                    197
+                },
+                {
+                    172,
+                    41,
+                    121
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    135,
+                    212
+                },
+                {
+                    116,
+                    199,
+                    68,
+                    195
+                },
+                {
+                    90,
+                    71
+                },
+                {
+                    159,
+                    241
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    136,
+                    197,
+                    116,
+                    228
+                },
+                {
+                    114,
+                    212,
+                    94,
+                    88
+                },
+                {
+                    149,
+                    247
+                },
+                {
+                    42
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    159,
+                    194,
+                    101
+                },
+                {
+                    248,
+                    71,
+                    238,
+                    29
+                },
+                {
+                    113,
+                    203,
+                    240
+                },
+                {
+                    45,
+                    44
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    138,
+                    226,
+                    79,
+                    218
+                },
+                {
+                    101,
+                    212
+                },
+                {
+                    79,
+                    65,
+                    152,
+                    241
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    130,
+                    222,
+                    100,
+                    237
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    164,
+                    208,
+                    116,
+                    245
+                }
+            }
+        },
+        {
+            ["t"] = 2,
+            ["f"] = {
+                ["q"] = 3446,
+                ["r"] = 1211
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    174,
+                    208,
+                    109
+                },
+                {
+                    241
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    179,
+                    212
+                },
+                {
+                    116,
+                    247,
+                    77
+                },
+                {
+                    216,
+                    92,
+                    76,
+                    147
+                },
+                {
+                    245,
+                    61,
+                    124
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    176,
+                    195
+                },
+                {
+                    105,
+                    250
+                },
+                {
+                    85
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    37,
+                    6,
+                    178,
+                    113
+                },
+                {
+                    133,
+                    60,
+                    201,
+                    166
+                },
+                {
+                    74,
+                    174,
+                    111
+                }
+            }
+        },
+        {
+            ["t"] = 1,
+            ["p"] = {
+                {
+                    37,
+                    21,
+                    177,
+                    124
+                },
+                {
+                    149,
+                    20
+                }
+            }
+        }
+    },
+    ["p"] = {
+        {
+            ["c"] = {
+                {
+                    103,
+                    98,
+                    98,
+                    98
+                },
+                {
+                    171,
+                    180,
+                    180,
+                    180
+                },
+                {
+                    17,
+                    16,
+                    17,
+                    17
+                },
+                {
+                    152,
+                    159,
+                    157,
+                    157
+                },
+                {
+                    9,
+                    41,
+                    41,
+                    41
+                },
+                {
+                    25,
+                    210,
+                    209,
+                    209
+                },
+                {
+                    192,
+                    12,
+                    8,
+                    8
+                },
+                {
+                    116,
+                    84,
+                    84,
+                    84
+                },
+                {
+                    119,
+                    9,
+                    8,
+                    9
+                },
+                {
+                    106,
+                    119,
+                    118,
+                    118
+                },
+                {
+                    171,
+                    79,
+                    79,
+                    79
+                }
+            },
+            ["k"] = {
+                {
+                    ["t"] = 1,
+                    ["p"] = {
+                        {
+                            178,
+                            212,
+                            113,
+                            225
+                        },
+                        {
+                            68,
+                            194,
+                            88
+                        }
+                    }
+                },
+                {
+                    ["t"] = 1,
+                    ["p"] = {
+                        {
+                            149,
+                            195
+                        },
+                        {
+                            108
+                        }
+                    }
+                },
+                {
+                    ["t"] = 1,
+                    ["p"] = {
+                        {
+                            181,
+                            195,
+                            108
+                        }
+                    }
+                },
+                {
+                    ["t"] = 1,
+                    ["p"] = {
+                        {
+                            141,
+                            212,
+                            116,
+                            252
+                        },
+                        {
+                            78,
+                            213
+                        }
+                    }
+                },
+                {
+                    ["t"] = 1,
+                    ["p"] = {
+                        {
+                            135,
+                            244
+                        },
+                        {
+                            84
+                        }
+                    }
+                }
+            },
+            ["p"] = {},
+            ["n"] = 0,
+            ["sk"] = 1809499418
+        }
+    },
+    ["n"] = 0,
+    ["sk"] = 2099200120
+}
+    local _kA=1462265018 _kB=1269857654
+    local _mutate_mask=176
+    local _fake_kA=631854396
+    local _fake_kB=1767218309
+
+    local function _dec(c,vm)
+        if c.t==1 then
+            local out={} local s=_kA+(vm.pc or 0)
+            for _i=1,#c.p do local seg=c.p[_i]; for _j=1,#seg do s=(s*48271)%2147483647; out[#out+1]=_char(seg[_j]~((s+_kB)%256)) end end
+            return _concat(out)
+        elseif c.t==2 then
+            local q=c.f.q~(_kB%4096) local r=c.f.r~(_kA%4096) return q*97+r
+        else return c.d end
+    end
+
+    local _mut=0 local _antiCount=0 local _threat=0
+    local function _run(vm)
+        local cs=vm.sk local last=_clock()
+        while not vm.halt do
+            _antiCount=_antiCount+1
+            if _antiCount%204==0 then
+                if _pcall~=pcall or _type~=type then _threat=_threat+1 end
+                local _dbg=debug; if _dbg and _dbg.gethook and _dbg.gethook() then _threat=_threat+2 end
+                if _threat>=2 then cs=(cs*(53657 - 5386)+(1245309519 * 3))%2147483647 end
+            end
+            if _antiCount%50==0 then
+                local now=_clock(); if now-last>0.1 then _threat=_threat+3 end; last=now
+            end
+            if vm.pc>#vm.c then break end
+            local inst=vm.c[vm.pc] local k=(cs%256) ~ (vm.pc%128)
+            local op,a,b,c=inst[1]~k,inst[2]~k,inst[3]~k,inst[4]~k
+            cs=(cs*48271)%2147483647 vm.pc=vm.pc+1
+            _mut=_mut+1
+            if _mut%10==0 and _random(1,100)<=10 then
+                local mp=vm.pc+_random(2,6); if vm.c[mp] then for _x=1,4 do vm.c[mp][_x]=vm.c[mp][_x]~_mutate_mask end end
+            end
+            local h=_disp[op]
+            if h then h(vm,a,b,c) end
+        end
+        return vm.ret
+    end
+
+    local _sandbox_level=0
+    local _mt={}
+    if _sandbox_level==0 then
+        local _okMt=_pcall(function()
+            _mt.__index=function(t,k) if k=='pc' or k=='st' or k=='lc' or k=='c' or k=='k' or k=='p' or k=='sk' then t.halt=true; return nil end; return _rawget(t,k) end
+            _mt.__newindex=function(t) t.halt=true end
+            _mt.__metatable='locked'
+        end)
+        if not _okMt then _mt={}; _sandbox_level=2 end
+    end
+    local _root=_setmeta({c=_njgxlaplo.c,k=_njgxlaplo.k,p=_njgxlaplo.p,n=_njgxlaplo.n,sk=_njgxlaplo.sk,pc=1,st={},lc={},up={},ret=nil,halt=false},_mt)
+    local _ok,_err=_pcall(function() return _run(_root) end)
+    if not _ok then _root.halt=true; return nil end
+    return _root.ret
+end)(...)
